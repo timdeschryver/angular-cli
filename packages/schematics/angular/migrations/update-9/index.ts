@@ -14,6 +14,7 @@ import { updateApplicationTsConfigs } from './update-app-tsconfigs';
 import { updateDependencies } from './update-dependencies';
 import { updateServerMainFile } from './update-server-main-file';
 import { updateWorkspaceConfig } from './update-workspace-config';
+import { updateTestBedGet } from './update-testbed-get';
 
 export default function(): Rule {
   return () => {
@@ -24,6 +25,7 @@ export default function(): Rule {
       updateApplicationTsConfigs(),
       updateDependencies(),
       updateServerMainFile(),
+      updateTestBedGet(),
       (tree, context) => {
         const packageChanges = tree.actions.some(a => a.path.endsWith('/package.json'));
         if (packageChanges) {
